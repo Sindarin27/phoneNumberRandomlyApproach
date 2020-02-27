@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<body>
+Is this your number>
+<input type="tel" readonly=true id="number" value="5555555555" onchange="format()"></input>
+<button type="button" onclick="increase()">No, mine's higher</button>
+<button type="button" onclick="confirm()">Yes!</button>
+<button type="button" onclick="decrease()">No, mine's lower</button>
+
+<script>
+var min = 0;
+var max = 9999999999
+function increase() {
+    min = document.getElementById("number").value;
+    document.getElementById("number").value = getRandom(min, max);
+    format()
+}
+
+function decrease() {
+    max = document.getElementById("number").value;
+    document.getElementById("number").value = getRandom(min, max);
+    format();
+}
+
+function getRandom(min, max) {
+	var randomNumber = Math.floor(Math.random() * (max - min)) + parseInt(min);
+    return randomNumber;
+}
+
+function format() {
+	while (document.getElementById("number").value.length < 9) {
+    	document.getElementById("number").value = "0" + document.getElementById("number").value;
+    }
+}
+
+function confirm() {
+	alert("Your phone number is " + document.getElementById("number").value + ". You're probably wondering how we got that now, aren't you?");
+}
+</script>
+</html>
