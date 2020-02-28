@@ -23,18 +23,16 @@ function decrease() {
 }
 
 function getRandom(min, max) {
-	var randomNumber = Math.floor(Math.random() * (max - min)) + parseInt(min);
-    return randomNumber;
+    var randomNumber = Math.floor(Math.random() * (max - min)) + parseInt(min);
+    return randomNumber === min ? randomNumber + 1 : randomNumber;
 }
 
 function format() {
-	while (document.getElementById("number").value.length < 9) {
-    	document.getElementById("number").value = "0" + document.getElementById("number").value;
-    }
+    document.getElementById("number").value = document.getElementById("number").value.padStart(10, '0');
 }
 
 function confirm() {
-	alert("Your phone number is " + document.getElementById("number").value + ". You're probably wondering how we got that now, aren't you?");
+    alert("Your phone number is " + document.getElementById("number").value + ". You're probably wondering how we got that now, aren't you?");
 }
 </script>
 </html>
